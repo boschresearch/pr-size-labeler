@@ -1,0 +1,22 @@
+# Copyright (c) 2022 - for information on the respective copyright owner see the NOTICE file or the
+# repository https://github.com/boschresearch/pr-size-labeller.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: "Github PR labeller"
+description: "Label PRs according to their size"
+inputs:
+  github-token:
+    description: The GitHub token used to create an authenticated client
+    default: ${{ github.token }}
+    required: false
+  bucketConfigFile:
+    description: >
+      A yaml file defining the buckets for the sizes. An example can be found at 
+      https://github.boschdevcloud.com/bios-bcai/pr-size-labeller/blob/main/defaultBuckets.yml
+    required: false
+    default: ""
+
+runs:
+  using: "node12"
+  main: "index.js"

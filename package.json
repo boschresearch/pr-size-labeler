@@ -1,0 +1,24 @@
+{
+  "name": "pr-size-labeller-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boschresearch/pr-size-labeler"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "fs": "^0.0.1-security",
+    "js-yaml": "^4.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "prettier": "^2.5.1"
+  }
+}

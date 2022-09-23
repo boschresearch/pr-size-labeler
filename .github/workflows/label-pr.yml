@@ -1,0 +1,11 @@
+name: Checks the diff size of PRs, labels them, and comments in case they exceed 200 lines of code.
+
+on: [pull_request]
+
+jobs:
+  add_pr_size_label:
+    runs-on: ubuntu-22.04
+    name: Check PR size
+    steps:
+      - name: Label and comment PR
+        uses: boschresearch/pr-size-labeler@v3
