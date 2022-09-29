@@ -14,7 +14,7 @@ buckets:
     label: 😵 Huge
     comment: >
       👮‍♀️🚨⚠️ This is a friendly reminder that the diff size of this PR is bigger than 
-      200 lines we aim for. Please consider splitting this PR into more digestible pieces!
+      2000 lines we aim for. Please consider splitting this PR into more digestible pieces!
   - maxSize: Infinity
     label: 🤯 Insane
     comment: >
