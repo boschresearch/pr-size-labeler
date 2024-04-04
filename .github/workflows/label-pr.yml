@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-22.04
     name: Check PR size
     steps:
+      - uses: actions/checkout@v4
+
       - name: Test the action in the current version
         uses: ./
 
