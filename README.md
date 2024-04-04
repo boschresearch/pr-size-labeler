@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Label and comment PR
-        uses: boschresearch/pr-size-labeler@v4.0.0
+        uses: boschresearch/pr-size-labeler@v5.0.0
         # Uncomment these if you want to use your own custom configuration
         #with:
         #  bucketConfigFile: "<PATH_TO_YOUR_BUCKET_CONFIG>"
