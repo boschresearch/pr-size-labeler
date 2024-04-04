@@ -8,4 +8,4 @@ jobs:
     name: Check PR size
     steps:
       - name: Label and comment PR
-        uses: boschresearch/pr-size-labeler@update-dependencies
+        uses: boschresearch/pr-size-labeler@v4.0.0
