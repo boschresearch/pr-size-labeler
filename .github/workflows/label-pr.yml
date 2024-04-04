@@ -1,3 +1,8 @@
+# Copyright (c) 2024 - for information on the respective copyright owner see the NOTICE file or the
+# repository https://github.com/boschresearch/pr-size-labeller.
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: Checks the diff size of PRs, labels them, and comments in case they exceed 200 lines of code.
 
 on: [pull_request]
@@ -7,5 +12,8 @@ jobs:
     runs-on: ubuntu-22.04
     name: Check PR size
     steps:
-      - name: Label and comment PR
-        uses: boschresearch/pr-size-labeler@v4.0.0
+      - uses: actions/checkout@v4
+
+      - name: Test the action in the current version
+        uses: ./
+
