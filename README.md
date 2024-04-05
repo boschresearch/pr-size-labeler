@@ -11,7 +11,7 @@ In practice, this looks like the following:
 
 ![An image of a comment created by the github-actions bot](pr-comment.png)
 
-## Example usage
+## Example Usage
 
 Add a new workflow file to the directory `.github/workflows/`.
 We recommend a name such as `label-pr-size.yml`.
@@ -26,7 +26,7 @@ jobs:
     runs-on: [docker]
     name: Check PR size
     container:
-      image: ubuntu:20.04
+      image: ubuntu:22.04
 
     steps:
       - name: Label and comment PR
