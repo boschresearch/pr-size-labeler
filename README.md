@@ -30,10 +30,10 @@ jobs:
 
     steps:
       - name: Label and comment PR
-        uses: boschresearch/pr-size-labeler@v5.0.0
-        # Uncomment these if you want to use your own custom configuration
-        #with:
-        #  bucketConfigFile: "<PATH_TO_YOUR_BUCKET_CONFIG>"
+        uses: boschresearch/pr-size-labeler@v5.0.1
+        # Uncomment these lines if you want to use your own custom configuration
+        # with:
+        #   bucketConfigFile: "<PATH_TO_YOUR_BUCKET_CONFIG>"
 ```
 
 Note that this workflow runs only on pull requests but not on pushes to
