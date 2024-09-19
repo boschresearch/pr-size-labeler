@@ -9,11 +9,10 @@ on: [pull_request]
 
 jobs:
   add_pr_size_label:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     name: Check PR size
     steps:
       - uses: actions/checkout@v4
 
       - name: Test the action in the current version
         uses: ./
-
