@@ -12,11 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
     name: Check PR size
     steps:
-<<<<<<< HEAD
       - uses: actions/checkout@v6
-=======
-      - uses: actions/checkout@v5
->>>>>>> main
 
       - name: Test the action in the current version
         uses: ./
