@@ -1,7 +1,8 @@
 {
   "name": "pr-size-labeler",
-  "version": "5.0.3",
+  "version": "5.0.2",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -11,8 +12,8 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/github": "^6.0.1",
+    "@actions/core": "^3.0.0",
+    "@actions/github": "^9.0.0",
     "fs": "^0.0.1-security",
     "js-yaml": "^4.1.0",
     "path": "^0.12.7"

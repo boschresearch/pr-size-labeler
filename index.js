@@ -6,15 +6,16 @@
 // This file implements a GitHub Action to add labels and comments according 
 // to a PRs size.
 
-const core = require("@actions/core")
-const github = require("@actions/github")
-const path = require("path")
-const yaml = require("js-yaml")
-const fs = require("fs")
+import { getInput, setFailed } from "@actions/core"
+import { getOctokit, context as githubContext } from "@actions/github"
+import path from "path"
+import yaml from "js-yaml"
+import fs from "fs"
+import { fileURLToPath } from "url"
 
-function getOctokit() {
-  const token = core.getInput("github-token", { required: true })
-  return github.getOctokit(token)
+function getOctokitClient() {
+  const token = getInput("github-token", { required: true })
+  return getOctokit(token)
 }
 
 async function getPull(octokit, context) {
@@ -34,8 +35,9 @@ async function getDiffSize(octokit, context) {
 }
 
 function parseInput(bucketConfigFile) {
+  const dirname = path.dirname(fileURLToPath(import.meta.url))
   if ("" === bucketConfigFile) {
-    bucketConfigFile = path.resolve(__dirname, "defaultBuckets.yml")
+    bucketConfigFile = path.resolve(dirname, "defaultBuckets.yml")
     console.log("Using default bucket settings from " + bucketConfigFile)
   } else {
     console.log("Reading bucket settings from " + bucketConfigFile)
@@ -124,29 +126,29 @@ function addCommentIfNotNull(octokit, context, oldLabelNames, assignedBucket) {
 }
 
 async function main() {
-  const octokit = getOctokit()
-  const diffSize = await getDiffSize(octokit, github.context)
+  const octokit = getOctokitClient()
+  const diffSize = await getDiffSize(octokit, githubContext)
   if (Math.floor(diffSize) !== Number(diffSize)) {
     console.log("Error: DiffSize is not of integer type.")
     process.exit(1)
   }
-  const buckets = parseInput(core.getInput("bucketConfigFile"))
+  const buckets = parseInput(getInput("bucketConfigFile"))
   const assignedBucket = getPRBucket(diffSize, buckets)
-  const oldLabelNames = await getOldLabels(octokit, github.context)
+  const oldLabelNames = await getOldLabels(octokit, githubContext)
   const supportedLabels = buckets.map((it) => {
     return it.label
   })
   updateLabels(
     octokit,
-    github.context,
+    githubContext,
     assignedBucket.label,
     oldLabelNames,
     supportedLabels,
   )
-  addCommentIfNotNull(octokit, github.context, oldLabelNames, assignedBucket)
+  addCommentIfNotNull(octokit, githubContext, oldLabelNames, assignedBucket)
 }
 
 main().catch((err) => {
-  core.setFailed(err.message)
+  setFailed(err.message)
   console.trace(err)
 })
